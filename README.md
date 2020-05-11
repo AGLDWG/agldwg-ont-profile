@@ -3,7 +3,7 @@
 
 ![](agldwg-logo-ochre-150.png)
 
-# AGLDWG Ontology Profile
+# Australian Government Ontology Profile
 A profile of OWL for the purposes of Australian Government ontology documentation.
 
 This is a *profile*, that is a specification that constrains, extends, combines, or provides guidance or explanation about the usage of another specifications. In this case, this profile constrains and extendes the [OWL 2 Web Ontology Language
