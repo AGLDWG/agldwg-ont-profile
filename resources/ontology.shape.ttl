@@ -1,0 +1,190 @@
+@prefix auorg: <http://linked.data.gov.au/org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <https://data.surroundaustralia.com/shapes/vocabulary/> .
+
+
+# Validate that the Ontology's URI starts with https://linked.data.gov.au/def/
+
+<TitleShape>
+	a sh:NodeShape ;
+	sh:targetClass owl:Ontology ;
+    sh:message "An AGOP ontology must have either an English skos:prefLabel, dcterms:title or rdfs:label property (a Literal) as a title." ;
+    sh:xone (
+        [
+            sh:property [
+                sh:path skos:prefLabel ;
+                sh:minCount 1 ;
+                sh:languageIn ( "en" ) ;
+            ]
+        ]
+        [
+            sh:property [
+                sh:path dcterms:title ;
+                sh:minCount 1 ;
+                sh:languageIn ( "en" ) ;
+            ]
+        ]
+        [
+            sh:property [
+                sh:path rdfs:label ;
+                sh:minCount 1 ;
+                sh:languageIn ( "en" ) ;
+            ]
+        ]         
+    ) ;
+.
+
+<TitleShape2>
+	a sh:NodeShape ;
+	sh:targetClass owl:Ontology ;
+    sh:message "An AGOP ontology may only have at most one title per language." ;
+    sh:xone (
+        [
+            sh:property [
+                sh:path skos:prefLabel ;
+                sh:minCount 1 ;
+                sh:uniqueLang true ;
+            ]
+        ]
+        [
+            sh:property [
+                sh:path dcterms:title ;
+                sh:minCount 1 ;
+                sh:uniqueLang true ;
+            ]
+        ]
+        [
+            sh:property [
+                sh:path rdfs:label ;
+                sh:minCount 1 ;
+                sh:uniqueLang true ;
+            ]
+        ]         
+    ) ;
+.
+
+<DescriptionShape>
+	a sh:NodeShape ;
+	sh:targetClass owl:Ontology ;
+    sh:message "An AGOP Ontology must have either a skos:definition, dcterms:description or rdfs:comment property (a Literal) and it must be in English." ;
+    sh:xone (
+        [
+            sh:property [
+                sh:path skos:definition ;
+                sh:minCount 1 ;
+                sh:languageIn ( "en" ) ;
+            ]
+        ] 
+        [
+            sh:property [
+                sh:path dcterms:description ;
+                sh:minCount 1 ;
+                sh:languageIn ( "en" ) ;
+            ]
+        ] 
+        [
+            sh:property [
+                sh:path rdfs:comment ;
+                sh:minCount 1 ;
+                sh:languageIn ( "en" ) ;
+            ]
+        ]    
+    ) ;
+.
+
+<CreatorShape>
+	a sh:NodeShape ;
+	sh:targetClass owl:Ontology ;
+    sh:property [
+        sh:path dcterms:creator ;
+        sh:minCount 1 ;
+        sh:or (
+            [
+                sh:class sdo:Organization ;
+            ]
+            [
+                sh:class sdo:Person ;
+            ]
+        ) ;       
+        sh:message "An AGOP ontology must have a dcterms:creator property (an sdo:Organization or an sdo:Person)" ;
+    ] ;  
+.
+
+<PublisherShape>
+	a sh:NodeShape ;
+	sh:targetClass owl:Ontology ;
+    sh:property [
+        sh:path dcterms:publisher;
+        sh:minCount 1 ;
+        sh:class sdo:GovernmentOrganization ;   
+        sh:in (
+            auorg:abs 
+            auorg:ausgin
+            auorg:agldwg
+            auorg:anu
+            auorg:ardc
+            auorg:ato
+            auorg:bom
+            auorg:coh
+            auorg:csiro
+            auorg:dawr
+            auorg:dawe
+            auorg:qdes
+            auorg:dhs
+            auorg:qdnrme
+            auorg:dee
+            auorg:gsq
+            auorg:ga
+            auorg:naa
+            auorg:nci
+            auorg:psma
+            auorg:tern
+        ) ;
+        sh:message "An AGOP ontology must have a dcterms:publisher property with an instance of a sdo:GovernmentOrganization as it's object, and that sdo:GovernmentOrganization must be from the AGLDWG's list of publishers." ;
+    ] ;
+.
+
+<DatesShape>
+	a sh:NodeShape ;
+	sh:targetClass owl:Ontology ;
+    sh:property [
+        sh:path dcterms:created ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ; 
+        sh:or (
+            [
+                sh:datatype xsd:dateTime ;
+            ]
+            [
+                sh:datatype xsd:date ;
+            ]
+            [
+                sh:datatype xsd:dateTimeStamp ;
+            ]            
+        ) ;
+        sh:message "An AGOP ontology must have a dcterms:created property that must be either an xsd:date, xsd:dateTime or xsd:dateTimeStamp." ;
+    ] ; 
+    sh:property [
+        sh:path dcterms:modified ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:or (
+            [
+                sh:datatype xsd:dateTime ;
+            ]
+            [
+                sh:datatype xsd:date ;
+            ]
+            [
+                sh:datatype xsd:dateTimeStamp ;
+            ]
+        ) ;
+        sh:message "An AGOP ontology must have a dcterms:modified property that must be either an xsd:date, xsd:dateTime or xsd:dateTimeStamp." ;
+    ] ;
+.
