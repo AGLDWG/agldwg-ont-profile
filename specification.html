@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AGLDWG</title>
+    <meta charset="utf-8" />
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
+    <meta name="dcterms.format" content="text/html" />
+    <meta name="dcterms.language" content="en" />
+    <meta name="dcterms.type" content="text" />    
+    <meta name="dcterms.title" content="Australian Government Ontology Profile Specification" />
+    <meta name="description" content="This is a specification - definition of requirements - for ontologies to be conformant with the Australian Government Ontology Profile" />
+    <meta name="dcterms.created" content="2021-03-15T20:30+10:00" />
+    <meta name="dcterms.modified" content="2021-03-15T22:30+10:00" />
+    <meta name="dcterms.creator" content="Nicholas J. Car" />
+    <meta name="dcterms.publisher" content="Australian Government Linked Data Working Group" />
+    <meta name="generator" content="Lovingly coded by hand" />
+
+    <link rel="favicon" type="image/png" href="https://www.linked.data.gov.au/style/img/agldwg-logo.ico" />
+
+    <style>
+        body {
+            font-family: Roboto,sans-serif;
+            font-weight: 300;
+            color: rgb(133, 25, 2);
+            background: url("style/img/comms_bg_grey.svg") top right no-repeat;
+            text-align: center;
+        }
+        #header {
+            width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        #main {
+            width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Helvetica Neue", sans-serif;
+            color: rgb(133, 25, 2);
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 2.4em;
+        }
+        h2 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+        }
+
+        h4 {
+            font-size: 1.25em;
+        }
+
+        p, li {
+            font-family: "Helvetica Neue", sans-serif;
+            line-height: 1.5em;
+            color: rgb(51, 26, 0);
+        }
+
+        a {
+            color: rgb(153, 79, 0); /*#994F00;*/
+        }
+
+        #nav {
+            padding-top:60px;
+        }
+
+        /* linked.data.gov.au additions */
+        div.table {
+            margin: 20px;
+            text-align: center;
+        }
+
+        span.caption {
+            font-size: small;
+        }
+
+        table.lined {
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: solid 2px black;
+            text-align: left;
+
+            table-layout:fixed;
+            width: 800px;
+        }
+
+        table.lined td,
+        table.lined th {
+            border: solid 1px black;
+            padding: 5px;
+
+            overflow: hidden;
+            word-wrap: break-word;
+            max-width:150px;
+        }
+
+        .ochre {
+            vertical-align: top;
+            background-color: rgb(133, 25, 2);
+            color: white;
+            padding: 10px;
+        }
+        .ochre a {
+            color: #e4e4e4;
+        }
+
+        .ochre h2,
+        .ochre h3,
+        .ochre h4 {
+            color: white;
+        }
+
+        .grey {
+            background-color: #e4e4e4; 
+            padding:10px;
+            margin-bottom: 10px;
+        }
+
+        .white {
+            vertical-align: top;
+            background-color: white;
+            color: rgb(133, 25, 2);
+            padding: 5px;
+        }
+
+        table.altrows {
+            border-collapse: collapse;
+        }
+
+
+        table.altrows tr:nth-child(even) {
+            background: #e4e4e4;
+            border-top: 1px solid #D8D8D8;
+        }
+        table.altrows tr:nth-child(odd) {
+            background: #ffffff;
+            border-top: 1px solid #D8D8D8;
+        }
+
+        table.altrows th,
+        table.altrows td {
+            /*border: solid 1px black;*/
+            padding: 5px;
+        }
+
+        table.pretty th {
+            color: white;
+            font-weight: bold;
+            background-color: #006983;
+        }
+
+        /* Tabs */
+        /* Style the tab */
+        div.tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        div.tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+
+        /* Change background color of buttons on hover */
+        div.tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        div.tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        button {
+            font-weight: 400;
+            font-size: 100%;
+            font-family: Roboto,sans-serif;
+        }
+
+        code {
+            font-size: large;
+        }
+
+        header {
+            width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        footer {
+            background: url("style/img/comms_footer_bg.svg") top left no-repeat;
+            background-color: #e4e4e4;
+            text-align:center;
+            padding: 2em 0 2em 0;
+        }
+        #footer-grid {
+            display: grid;
+            grid-template-columns: 80% 1fr;
+            margin: 0 auto;
+            text-align: left;
+            line-height: 2em;
+            font-size: smaller;
+            width: 900px;
+        }
+
+        #footer_content a {
+            color: #616161;
+            border-bottom: 1px solid currentcolor;
+            text-decoration: none;
+        }
+
+        table.alternating {
+            width:100%;
+            border-collapse: collapse;
+        }
+
+        table.alternating th,
+        table.alternating td {
+            padding: 5px;
+        }
+
+        table.alternating tr:nth-child(odd) {
+            background: #efefef;
+            border-top: 1px solid #D8D8D8;
+        }
+
+        table.alternating tr:nth-child(even) {
+            background: #ffffff;
+            border-top: 1px solid #D8D8D8;
+        }
+
+        dt { 
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 5px;;
+        }
+
+        .req {
+            color:brown;
+        }
+
+        .note {
+            font-size: small;
+        }
+
+        .note code {
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+<header id="header" style="text-align:right; padding-top:10px;">
+    <div style="width:150px; height:150px; float:left;">
+        <img src="https://www.linked.data.gov.au/style/img/agldwg-logo-ochre-150.png" alt="AGLDWG logo" />
+    </div>
+    <div id="nav">
+        <a href="https://agldwg.github.io/website/">Home</a> |
+        <a href="governance">Governance</a> |
+        <a href="guidelines">URI Guidelines</a> |
+        <a href="assistance">Assistance</a> |
+        <a href="showcase">Showcase</a> |
+        <a href="events">Events</a> |
+        <a href="groups">Groups</a> |
+        <a href="howto">How To</a> |
+        <a href="contact">Contact</a> |
+        <a href="join">Join</a>
+    </div>
+</header>
+<div id="main" style="clear:both;">
+    <h1>AGOP - Specification</h1>
+    <section id="metadata">
+        <dl>
+            <dt>URI</dt>
+            <dd><code><a href="https://linked.data.gov.au/def/ga-vocpub/specification.html">https://linked.data.gov.au/def/ga-vocpub/specification.html</a></code></dd>
+            <dt>Title</dt>
+            <dd>Australian Government Ontology Profile - Specification</dd>
+            <dt>Definition</dt>
+            <dd>This is a specification - definition of requirements - for ontologies to be conformant with the Australian Government Ontology Profile</dd>
+            <dt>Created</dt>
+            <dd>2021-03-15</dd>
+            <dt>Modified</dt>
+            <dd>2021-03-16</dd>
+            <dt>Creator</dt>
+            <dd><a href="https://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a></dd>
+            <dt>Publisher</dt>
+            <dd><a href="https://linked.data.gov.au/org/agldwg">Australian Government Linked Data Working Group</a></dd>
+            <dt>Further metadata</dt>
+            <dd>This specification is part of the <em>Australian Government Ontology Profile</em>. See that profile's main document for License &amp; Rights information and other metadata not given here.</dd>
+            <dt>Profile URI</dt>
+            <dd><code><a href="https://linked.data.gov.au/def/agop">https://linked.data.gov.au/def/agop</a></code></dd>
+        </dl>
+    </section>
+    <section id="abstract">
+        <h2>Abstract</h2>
+        <p>
+            This is the specification document of the <a href="https://www.linked.data.gov.au">Australian Government Linked data Working Group (AGLDWG)</a>'s <em><a href="https://www.w3.org/TR/dx-prof/#definitions">profile</a></em>, that is a specification that defines its dependencies and parts, of the <a href="https://www.w3.org/TR/owl2-rdf-based-semantics/">Web Ontology Language (OWL)</a> in its RDF form. It defines the additional requirements on top of OWL that ontologies must conform to in order to be fit for AGLDWG purposes. These purposes include:
+        </p>
+        <ul>
+            <li>integration with other Australian Government ontologies</li>
+            <li>automated documentation generation</li>
+            <li>straightforward IRI assignment</li>
+        </ul>
+        <p>
+            This specification is not to be used for the testing of conformance of RDF resources to this profile. That role belongs to the <em>validation</em> resource within this profile:
+        </p>
+        <ul>
+            <li><a href="https://linked.data.gov.au/def/agop/validation.shacl.ttl">https://linked.data.gov.au/def/agop/validation.shacl.ttl</a></li>
+        </ul>
+        <p>
+            For the list of all resources within this profile, see the profile's definition:
+        </p>
+        <ul>
+            <li><a href="https://linked.data.gov.au/def/agop">https://linked.data.gov.au/def/agop</a></li>
+        </ul>
+    </section>
+    <section id="namespaces">
+        <h2>Namespaces</h2>
+        <p>
+            This document refers to elements of various ontologies by short codes using namespace prefixes. The prefixes and their corresponding namespaces' URIs are:
+        </p>
+        <dl>
+            <dt>agop</dt>
+            <dd><code>https://linked.data.gov.au/agop/</code></dd>               
+            <dt>dcterms</dt>
+            <dd><code>http://purl.org/dc/terms/</code></dd>
+            <dt>owl</dt>
+            <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+            <dt>prof</dt>
+            <dd><code>http://www.w3.org/ns/dx/prof/</code></dd>
+            <dt>prov</dt>
+            <dd><code>http://www.w3.org/ns/prov#</code></dd>
+            <dt>sdo</dt>
+            <dd><code>https://schema.org/</code></dd>
+            <dt>skos</dt>
+            <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+            <dt>rdfs</dt>
+            <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>     
+        </dl>
+    </section>
+    <section id="intro">
+        <h2>1. Introduction</h2>
+        <section id="ont-publication">
+            <h3>AGLDWG ontology publication</h3>
+            <p>
+                The <a href="https://www.linked.data.gov.au">Australian Government Linked Data Working Group (AGLDWG)</a> provides guidance to ontology publishers that attempt to ensure that their ontologies work well with other Australian Govenment ontologies and are able to be managed in standard ways. This means their ontologies should:
+            </p>
+            <ul>
+                <li>integrate easily with other Australian Government ontologies</li>
+                <li>be able to have automated documentation generated from RDF source</li>
+                <li>be able to have IRI assigned to them easily</li>
+            </ul>
+            <p>
+                In practice, this means the ontologies need certain, fairly basic, <a href="https://www.w3.org/TR/vocab-dcat/">DCAT2-style</a> metadata supplied with them, and they need certain per-element annotations for the classes and properties they define. There is also a general expectation that OWL modelling is conducted in a fairly common way with "common" being as per the majority of major ontologies available from standards bodies such as the <a href="https://www.w3.org">World Wide Web Consortium (W3C)</a> and the <a href="https://www.ogc.org"></a>Open Geospatial Consortim (OGC)</a>.
+            </p>
+        </section>
+        <section id="specification">
+            <h3>This document as a <em>specification</em></h3>
+            <p>
+                This document is part of a formal <em>profile</em> of OWL. OWL is a <em>standard</em> and a <em>profile</em> is also a standard but one whose dependencies on other standards and whose parts are defined. This <em>profile</em> is described using <a href="https://www.w3.org/TR/dx-prof/">The Profiles Vocabulary (PROF)</a>.
+            </p>
+            <p>
+                The <em>profile</em> this document is part of - the Australian Government Ontology Profile (AGOP) - is defined at <a href="https://linked.data.gov.au/def/agop">https://linked.data.gov.au/def/agop</a> and, by definintion, anything that conforms to this profile also conforms to OWL. Also, this profile is aligned with the AGLDWG's <a href="https://linked.data.gov.au/guidelines">IRI Guidelines</a> which have expectations of metadata for definitional resources, such as ontologies, for which IRIs are requested.
+            </p>
+            <p>
+                This document plays the role of <em>specification</em> within the AGOP, that it it notmatively defines the rules that the profile contains. It does so in human-redable terms (i.e. in English) and not in machine-readble terms. The role <em>specification</em> is formally defined with respect to profile elements, see it and other profile resource roles at:
+            </p>
+            <ul>
+                <li><a href="https://www.w3.org/TR/dx-prof/#Role:specification"><em>specification</em> - within the context of a Profiles Vocabulary resource role</a></li>
+            </ul>
+        </section>            
+        <section id="validators">
+            <h3>Validators</h3>            
+            <p>
+                There are many possible machine-readable or machine-actional expressions of this <em>specification</em> that can be used to validate if data conforms to this profile. Validators, according to PROF, should be indicated as such with the role <em>validation</em>, also defined in the voabulary linked to above. This profile defines a resource with role <em>validation</em> which is a <a href="https://www.w3.org/TR/shacl/">SHACL Shapes document</a> that can be used with validation tools such as <a href="https://github.com/RDFLib/pySHACL">pySHACL</a>. Other resources withrole <em>validation</em> could be defined. This profile's sole validator is at:
+            </p>
+            <ul>
+                <li><a href="https://linked.data.gov.au/def/agop/validator.shacl.ttl">https://linked.data.gov.au/def/agop/validator.shacl.ttl</a></li>
+            </ul>            
+            <p>
+                This profile happens to define only one resource with role <em>validation</em> but it could define either multiple validation resources in one format - perhaps multiple SHACL files for multiple classes to validate - or multiple standards' validators, such as XML validators, JSON Schema ShEx (another RDF data validator language). This profile could also not define every validator it needs but instead inherit validators from things this profile profiles, e.g. OWL. If we had OWL validators to hand (we don't) we would just define this profile's unique validators and import OWL's. Since we don't have OWL validators, we have included all the rules we want, in total, in this specification and within the accompanying validator.
+            </p>
+            <p>
+                In addition to using this profile's validation resource directly - with pySHACL or similar, as indicated above - data (instances of ontologies that people want to publish) can be validated against this profile by using tools that offer <em>validatio by profile</em>. Such tools find all the relevant validators for a given profile - whether there's one, many, inherited etc. - and compound them into a single validation resource and use that. There is currently only one such tool available: 
+            </p>
+            <ul>
+                <li><a href="https://github.com/surroundaustralia/cheka">Cheka</a> - an open source, <em>validation by profile</em>, library</li>
+            </ul> 
+            <p>
+                Cheka can be used online within the ChekaBox service:
+            </p>
+            <ul>
+                <li><a href="https://chekabox.surroundaustralia.com/">ChekaBox</a> - a managed instance of Cheka that also contains catalogues of <em>profile</em> for use</li>
+            </ul> 
+            <p> 
+                That instance of ChekaBox come pre-loaded with this profile and many others so can easily be selected for use.
+            </p>
+        </section>
+    </section>
+    <section id="elements-reqs">
+        <h2>2. Elements &amp; Requirements</h2>
+        <p>
+            This section defines the elements and requirements of/on them needed for AGOP-compliant ontologies. Requirements are numbered and validators for this profile indicate when Requirements are tested for by individual machine-actionable code rules.
+        </p>
+        <section id="ontology">
+            <h3>2.1 Ontology Class</h3>
+            <p>
+                This subsection lists requriments for basic DCAT-style metadata for the <code>owl:Ontology</code> class instance, i.e. the ontology as a whole.
+            </p>
+            <p class="req">
+                2.1.1 An ontology <em>MUST</em> have one and only one title indicated by a <code>skos:prefLabel</code> property linking to a textual literal value, in English.
+            </p>
+            <p class="note">
+                <code>skos:prefLabel</code> is to be used rather than <code>rdfs:label</code> or <code>dcterms:title</code> or other, similar, titling properties. Inferencing rules in SKOS and elsewhere indicate that <code>rdfs:label</code> or <code>dcterms:title</code> may be inferred from <code>skos:prefLabel</code>.
+            </p>
+            <p class="req">
+                2.1.2 An ontology <em>MUST</em> have one and only one definition indicated by a <code>skos:definition</code> property linking to a text literal value, in English.
+            </p>
+            <p class="note">
+                <code>skos:definition</code> is to be used rather than <code>rdfs:comment</code> or <code>dcterms:description</code> or other, similar, description properties. Inferencing rules in SKOS and elsewhere indicate that <code>rdfs:comment</code> or <code>dcterms:description</code> may be inferred from <code>skos:definition</code>.
+            </p>
+            <p class="req">
+                2.1.3 An ontology <em>MUST</em> have one and only one publisher indicated by a <code>dcterms:publisher</code> property that links to a publishing agent, likely a government agency, identified by an IRI that <em>MUST</em> be catalogued by the Australian Government Linked Data Working Group within their <code>/org/</code> register.
+            </p>
+            <p class="note">
+                Identifiying publishing agents with literal values, e.g. <code>&lt;x&gt; dcterms:publisher "Some Agency"</code> is prohibited and that IRIs for publishing agents may easily be registered with the AGLDWG. Example of existing registered agent IRIs are:
+            </p>
+            <ul style="font-size: small;">
+                <li><a href="https://linked.data.gov.au/org/agldwg">https://linked.data.gov.au/org/agldwg</a> - Australian Government Linked Data Working Group</li>
+                <li><a href="https://linked.data.gov.au/org/anu">https://linked.data.gov.au/org/anu</a> - Australian National University</li>
+                <li><a href="https://linked.data.gov.au/org/csiro">https://linked.data.gov.au/org/csiro</a> - CSIRO</li>
+                <li><a href="https://linked.data.gov.au/org/finance">https://linked.data.gov.au/org/finance</a> - Department of Finance</li>
+                <li><a href="https://linked.data.gov.au/org/ga">https://linked.data.gov.au/org/ga</a> - Geoscience Australia</li>
+            </ul>
+            <p class="req">
+                2.1.4 An ontology <em>MUST</em> have one or more creator indicated by a <code>dcterms:creator</code> property that links to creating agents, which may be persons or organisations. They <em>MUST</em> be identified by IRI that must either be catalogued by the Australian Government Linked Data Working Group within their <code>/org/</code> register (for Organisation) or have basic schema.org metadata supplied for it (for Persons) with <code>sdo:name</code> at a minimum and <code>sdo:email</code> suggested.
+            </p>
+            <p class="req">
+                2.1.5 An ontology <em>MUST</em> have one and only one created date indicated by a <code>dcterms:created</code> property that links to an <code>xsd:date</code> literal or specialised datatype thereof for the date on which the ontology was first created.
+            </p>
+            <p class="req">
+                2.1.6 An ontology <em>MUST</em> have one and only one modified date indicated by a <code>dcterms:modified</code> property that links to an <code>xsd:date</code> literal or specialised datatype thereof for the date on which the ontology was last modified.
+            </p>
+            <p class="note">
+                Other date properties, such as <code>dcterms:date</code> should not be used.
+            </p>
+            <p class="req">
+                2.1.7 An ontology <em>MUST</em> have one and only one license (or licence) indicated by a <code>dcterms:license</code> property that links to a license identified by an IRI. 
+            </p>
+            <p class="note">
+                Any resolvable IRI may be used to identify a license, for instance, the following IRIs provided by Creative Commons for their licenses may be used:
+            </p>    
+            <ul style="font-size: small;">                
+                <li><a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a> - CC Attribution 4.0 International (CC BY 4.0)</li>
+                <li><a href="https://creativecommons.org/licenses/by-sa/3.0/au/">https://creativecommons.org/licenses/by-sa/3.0/au/</a> - CC Attribution-ShareAlike 3.0 Australia (CC BY-SA 3.0 AU)</li>
+                <li><a href="https://creativecommons.org/licenses/by/2.5/">https://creativecommons.org/licenses/by/2.5/</a> - CC Attribution 2.5 Generic (CC BY 2.5)</li>                
+            </ul>
+            <p class="note">
+                However, the AGLDWG may publish a catalogue of acceptable licenses that must be used after that point.
+            </p>
+            <p class="req">
+                2.1.8 An ontology <em>MUST</em> have one and only one rights statement that includes copyright information indicated by a <code>dcterms:rights</code> property that links to a string literal value. The string value <em>SHOULD</em> of the form "&copy; AGENCY NAME, YEAR" or "&copy; Australian Government, YEAR".
+            </p>
+            <p class="req">
+                2.1.9 An ontology <em>SHOULD</em> have one and only one version identifier indicated by a <code>owl:versionIRI</code> property that links to a unique IRI for the version of the ontology.
+            </p>
+            <p class="req">
+                2.1.10 An ontology <em>SHOULD</em> have one and only one version information statement indicated by a <code>owl:versionInfo</code> property that links to a string literal value containing notes for the version of the ontology.
+            </p>
+            <p class="req">
+                2.1.11 An ontology that is presented or managed online using an online version control repository <em>SHOULD</em> indicate the location of that repository with the <code>sdo:codeRepository</code> property that links to the IRI of the online version control repository repsenseted as a literal value of type <code>xsd:anyURI</code>.
+            </p>                   
+        </section>
+        <section id="classes">
+            <h3>2.2 Classes</h3>
+            <p class="req">
+                2.2.1 Each class defined by the ontology <em>MUST</em> indicate that it is defined by it by a <code>rdfs:isDefinedBy</code> property indicating the IRI of the ontology.
+            </p>            
+            <p class="req">
+                2.2.2 Each class described within the ontology <em>MUST</em> have one and only one title indicated by a <code>skos:prefLabel</code> property linking to a textual literal value, in English. the title <em>SHOULD</em> be rendered in natural English and if made of multiple words, spaces should be used between the words.
+            </p>
+            <p class="note">
+                <code>skos:prefLabel</code> is to be used rather than <code>rdfs:label</code> or <code>dcterms:title</code> or other, similar, titling properties. Inferencing rules in SKOS and elsewhere indicate that <code>rdfs:label</code> or <code>dcterms:title</code> may be inferred from <code>skos:prefLabel</code>.
+            </p>       
+            <p class="req">
+                2.2.3 Each class described within the ontology <em>MUST</em> have one and only one definition indicated by a <code>skos:definition</code> property linking to a text literal value, in English.
+            </p>
+            <p class="note">
+                <code>skos:definition</code> is to be used rather than <code>rdfs:comment</code> or <code>dcterms:description</code> or other, similar, description properties. Inferencing rules in SKOS and elsewhere indicate that <code>rdfs:comment</code> or <code>dcterms:description</code> may be inferred from <code>skos:definition</code>.
+            </p>
+            <p class="req">
+                2.2.4 Each class described within the ontology <em>SHOULD</em> indicate any relationships to classes in existing common ontologies or ontologies published by by Australian Government entities with the appropriate RDFS or OWL properties.
+            </p>
+            <p class="note">
+                Newly-defined classes may not have any natural relationships to other classes however, if they do, they should idicate such relatioships with properties such as <code>rdfs:subClassOf</code> or <code>owl:equivalentClass</code> etc.
+            </p>            
+        </section>
+        <section id="properties">
+            <h3>2.3 Properties</h3>
+            <p class="req">
+                2.3.1 Each property defined by the ontology <em>MUST</em> indicate that it is defined by it by a <code>rdfs:isDefinedBy</code> property indicating the IRI of the ontology.
+            </p>                 
+            <p class="req">
+                2.3.2 Each property described within the ontology <em>MUST</em> have one and only one title indicated by a <code>skos:prefLabel</code> property linking to a textual literal value, in English. the title <em>SHOULD</em> be rendered in natural English and if made of multiple words, spaces should be used between the words.
+            </p>
+            <p class="note">
+                <code>skos:prefLabel</code> is to be used rather than <code>rdfs:label</code> or <code>dcterms:title</code> or other, similar, titling properties. Inferencing rules in SKOS and elsewhere indicate that <code>rdfs:label</code> or <code>dcterms:title</code> may be inferred from <code>skos:prefLabel</code>.
+            </p>       
+            <p class="req">
+                2.3.3 Each property described within the ontology <em>MUST</em> have one and only one definition indicated by a <code>skos:definition</code> property linking to a text literal value, in English.
+            </p>
+            <p class="note">
+                <code>skos:definition</code> is to be used rather than <code>rdfs:comment</code> or <code>dcterms:description</code> or other, similar, description properties. Inferencing rules in SKOS and elsewhere indicate that <code>rdfs:comment</code> or <code>dcterms:description</code> may be inferred from <code>skos:definition</code>.
+            </p>
+            <p class="req">
+                2.3.4 Each property described within the ontology <em>SHOULD</em> indicate any relationships to property in existing common ontologies or ontologies published by by Australian Government entities with the appropriate RDFS or OWL properties.
+            </p>
+            <p class="note">
+                Newly-defined property may not have any natural relationships to other properties however, if they do, they should idicate such relatioships with properties such as <code>rdfs:subPropertyOf</code> or <code>owl:equivalentProperty</code> etc.
+            </p>            
+        </section>      
+    </section>
+    <!--
+    <section id="references">
+        <h2>3. References</h2>
+        <dl>   
+            <dt><a id="prof"></a>PROV</dt>
+            <dd>
+                Rob Atkinson; Nicholas J. Car (eds.). <em>The Profiles Vocabulary</em>. 18 December 2019. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/dx-prof/">https://www.w3.org/TR/dx-prof/</a>
+            </dd>
+            <dt><a id="skos"></a>SKOS</dt>
+            <dd>
+                Alistair Miles; Sean Bechhofer (eds.). <em>SKOS Simple Knowledge Organization System Reference</em>. 18 August 2009. W3C Recommendation. URL: <a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a>
+            </dd>
+            <dt><a id="cheka"></a>CHEKA</dt>
+            <dd>
+                Nicholas J. Car <em>Cheka: A profile hierarchy-based RDF graph validation tool written in Python</em>. 2020. Software. DOI: <a href="https://doi.org/10.5281/zenodo.3676330">https://doi.org/10.5281/zenodo.3676330</a>. Latest code: <a href="https://github.com/surroundaustralia/cheka">https://github.com/surroundaustralia/cheka</a>
+            </dd>
+        </dl>
+    </section>
+    -->
+</div> <!-- main -->
+<footer>
+    <div id="footer-grid">
+        <div style="grid-column:1; align-self: end;">
+            <img src="style/img/cc-by.png" alt="CC BY 4.0" width="88" height="31">
+            This web page content is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
+        </div>
+        <div style="grid-column:2; align-self: end; text-align:right; ">
+            <a href="contact">Contact Us</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
