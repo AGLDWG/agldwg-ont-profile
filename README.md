@@ -15,9 +15,23 @@ This profile is formally described using the [Profiles Vocabulary](https://www.w
 * [agop.html](profile.html) - HTML
   * see this rendered at [here](https://rawcdn.githack.com/AGLDWG/agop/a9e85a31a53985375f908d17875695005c207367/agop.html)
 
+## Profile Resources
+## Specification
+The set of Requirements for ontologies that this Profile defines, in human-readable (web page) form are given in the [specification document](specification.html), a rendered version of which you can see here:
 
-## Repository Content
-Please see the human-readable profile documentation at *LINK-TO-BE-ADDED* to understand the various parts of this profile.
+* [specification](https://rawcdn.githack.com/AGLDWG/agop/a9e85a31a53985375f908d17875695005c207367/specification.html)
+
+## Validator
+The machine-actionable form of the same Requirements is given in the [validator resource](validator.shacl.ttl) which is a [SHACL](https://www.w3.org/TR/shacl/) Shapes file used to validate RDF documents.
+
+
+## Examples
+Four examples of ontologies - two valid, two invalid - are given in this repository's top-level folder:
+
+1. [example.valid-1.ttl](example.valid-1.ttl)
+1. [example.valid-2.ttl](example.valid-2.ttl)
+1. [example.invalid-1.ttl](example.invalid-1.ttl)
+1. [example.invalid-2.ttl](example.invalid-2.ttl)
 
 ## License
 This repository's content is licensed using the [Creative Commons *Attribution 4.0 International* license](https://creativecommons.org/licenses/by/4.0/). See the [LICENSE file](LICENSE) for the deed.
