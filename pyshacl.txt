@@ -1,0 +1,1 @@
+pyshaclx -s /Users/nick/Work/agldwg/agop/validator.shacl.ttl /Users/nick/Work/agldwg/agop/example.valid-1.ttl

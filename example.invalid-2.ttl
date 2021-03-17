@@ -1,0 +1,36 @@
+# Example, valid 1
+#
+# This example is minimal ontology valid according to the AGOP (https://linked.data.gov.au/def/agop)
+
+@prefix : <http://linked.data.gov.au/def/minimal-invalid-ont-example-2/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://linked.data.gov.au/def/minimal-invalid-ont-example-2> 
+    a owl:Ontology ;
+    owl:versionIRI <http://linked.data.gov.au/def/minimal-invalid-ont-example-2/0.9> ;                                                    
+    dcterms:creator <https://example.com/person/barry> ;
+    skos:prefLabel "Invalid Ontology 2"@en ;
+    owl:versionInfo "0.9"@en ;
+    skos:definition "This ontology is a minimal, invalid ontology according to this Profile's validation resource. This is invalid due to a class in the ontology not having a definition, indicated by `skos:definition`."@en ;
+    dcterms:publisher <http://linked.data.gov.au/org/Xxx> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "(c) Commonwealth of Australia (Department of Xxx) 2019"@en ;
+    dcterms:created "2016-12-06"^^xsd:date ;
+    dcterms:modified "2016-12-07"^^xsd:date .
+
+<https://example.com/person/barry>
+  a sdo:Person ;
+  sdo:name "Barry Crocker" ;
+  sdo:email <barry@crocker.com> ;
+  sdo:affiliation <http://linked.data.gov.au/org/Xxx> ;
+.
+
+:SpecialClass a owl:Class ;
+    rdfs:isDefinedBy <http://linked.data.gov.au/def/minimal-invalid-ont-example-2> ;
+    skos:prefLabel "Special Class"@en ;
+.
