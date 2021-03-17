@@ -11,9 +11,9 @@ RDF-Based Semantics](https://www.w3.org/TR/owl2-rdf-based-semantics/) to create 
 
 This profile is formally described using the [Profiles Vocabulary](https://www.w3.org/TR/dx-prof/) and a machine-redable ([RDF](https://www.w3.org/RDF/)) and human-readable (HTML) form of it are available:
 
-* [profile.ttl](profile.ttl) - RDF (turtle serialization)
-* [profile.html](profile.html) - HTML
-  * see this rendered at *LINK-TO-BE-ADDED*
+* [agop.ttl](profile.ttl) - RDF (turtle serialization)
+* [agop.html](profile.html) - HTML
+  * see this rendered at [here](https://rawcdn.githack.com/AGLDWG/agop/a9e85a31a53985375f908d17875695005c207367/agop.html)
 
 
 ## Repository Content
@@ -26,4 +26,4 @@ This repository's content is licensed using the [Creative Commons *Attribution 4
 ## Contacts
 This profile was created by members of the Australian Government Linked Data Working Group.
 
-Please see the profile source file itself ([profile.ttl](profile.ttl)) for particular contributors' details and please see the AGLDWG's website, <http://www.linked.data.gov.au>, for AGLDWG contact details.
+Please see the profile source file itself ([agop.ttl](agop.ttl)) for particular contributors' details and please see the AGLDWG's website, <http://www.linked.data.gov.au>, for AGLDWG contact details.
