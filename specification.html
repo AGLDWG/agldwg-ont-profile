@@ -331,7 +331,7 @@
             This specification is not to be used for the testing of conformance of RDF resources to this profile. That role belongs to the <em>validation</em> resource within this profile:
         </p>
         <ul>
-            <li><a href="https://linked.data.gov.au/def/agop/validation.shacl.ttl">https://linked.data.gov.au/def/agop/validation.shacl.ttl</a></li>
+            <li><a href="https://linked.data.gov.au/def/agop/validator">https://linked.data.gov.au/def/agop/validator</a></li>
         </ul>
         <p>
             For the list of all resources within this profile, see the profile's definition:
@@ -401,7 +401,7 @@
                 There are many possible machine-readable or machine-actional expressions of this <em>specification</em> that can be used to validate if data conforms to this profile. Validators, according to PROF, should be indicated as such with the role <em>validation</em>, also defined in the voabulary linked to above. This profile defines a resource with role <em>validation</em> which is a <a href="https://www.w3.org/TR/shacl/">SHACL Shapes document</a> that can be used with validation tools such as <a href="https://github.com/RDFLib/pySHACL">pySHACL</a>. Other resources withrole <em>validation</em> could be defined. This profile's sole validator is at:
             </p>
             <ul>
-                <li><a href="https://linked.data.gov.au/def/agop/validator.shacl.ttl">https://linked.data.gov.au/def/agop/validator.shacl.ttl</a></li>
+                <li><a href="https://linked.data.gov.au/def/agop/validator">https://linked.data.gov.au/def/agop/validator</a></li>
             </ul>            
             <p>
                 This profile happens to define only one resource with role <em>validation</em> but it could define either multiple validation resources in one format - perhaps multiple SHACL files for multiple classes to validate - or multiple standards' validators, such as XML validators, JSON Schema ShEx (another RDF data validator language). This profile could also not define every validator it needs but instead inherit validators from things this profile profiles, e.g. OWL. If we had OWL validators to hand (we don't) we would just define this profile's unique validators and import OWL's. Since we don't have OWL validators, we have included all the rules we want, in total, in this specification and within the accompanying validator.
