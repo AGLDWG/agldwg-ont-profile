@@ -22,7 +22,7 @@ This profile contains several resources that specify the elements required of an
     prof:hasResource [
         rdfs:label "Ontology specification" ;
         prof:hasRole role:specification ;
-        prof:hasArtifact <https://linked.data.gov.au/def/specification.html> ;
+        prof:hasArtifact <https://linked.data.gov.au/def/spec> ;
         dcterms:conformsTo <https://html.spec.whatwg.org/> ;
         dcterms:format "text/html" ;
     ] ,        
