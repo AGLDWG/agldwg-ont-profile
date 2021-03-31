@@ -21,6 +21,7 @@
         sh:path skos:prefLabel ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
         sh:languageIn ("en") ;
     ]
 .
@@ -33,6 +34,7 @@
         sh:path skos:definition ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
         sh:languageIn ("en") ;
     ]
 .
@@ -112,7 +114,7 @@
         sh:path dcterms:rights ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
     ]
 .
 
@@ -132,7 +134,7 @@
     sh:message "Requirement 2.2.10 An ontology _SHOULD_ have one and only one version information statement indicated by a `owl:versionInfo` property that links to a string literal value containing notes for the version of the ontology." ;
     sh:property [
         sh:path owl:versionInfo ;
-        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;        
     ]
 .
 
@@ -174,6 +176,7 @@
                 sh:path skos:prefLabel ;
                 sh:minCount 1 ;
                 sh:maxCount 1 ;
+                sh:datatype rdf:langString ;
                 sh:languageIn ("en") ;
             ]
         ]
@@ -189,6 +192,7 @@
         sh:path skos:definition ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
         sh:languageIn ("en") ;
     ]
     # TODO: only if the class is defined in this ontology
@@ -222,6 +226,7 @@
         sh:path skos:prefLabel ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
         sh:languageIn ("en") ;
     ]
     # TODO: only if the property is defined in this ontology
@@ -235,6 +240,7 @@
         sh:path skos:definition ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
         sh:languageIn ("en") ;
     ]
     # TODO: only if the property is defined in this ontology
@@ -249,7 +255,4 @@
 #
 #   Namespaces
 #
-<Requirement-2.3.1>
-	a sh:NodeShape ;
-    sh:message "Requirement 2.3.1 Each skos:Concept MUST have a definition indicated with a skos:definition property that is a text literal value in English" ;
-.
+
