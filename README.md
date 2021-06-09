@@ -19,7 +19,7 @@ This profile is formally described using the [Profiles Vocabulary](https://www.w
 
 his profile's persistent URI:
 
-* <https://linked.data.gov.au/def/lagop>
+* <https://linked.data.gov.au/def/agop>
 
 
 ## Profile Resources
