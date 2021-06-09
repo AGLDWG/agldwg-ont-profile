@@ -17,6 +17,11 @@ This profile is formally described using the [Profiles Vocabulary](https://www.w
 * [agop.html](profile.html) - HTML
   * see this rendered at [here](https://rawcdn.githack.com/AGLDWG/agop/a9e85a31a53985375f908d17875695005c207367/agop.html)
 
+his profile's persistent URI:
+
+* <https://linked.data.gov.au/def/lagop>
+
+
 ## Profile Resources
 This Profile contains several different resources.
 
