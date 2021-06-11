@@ -38,7 +38,7 @@ This profile contains several resources that specify the elements required of an
         rdfs:label "Online Version Control Repository" ;
         rdfs:comment "Git repository containing all of this Profile's resources" ;
         prof:hasRole role:repository ;
-        prof:hasArtifact <https://github.com/AGLDWG/agop> ;
+        prof:hasArtifact "https://github.com/AGLDWG/agop"^^xsd:anyURI ;
     ] ,
     [
         rdfs:label "Validation guidance" ;
